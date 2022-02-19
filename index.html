@@ -7,10 +7,34 @@
     <script src="/counter-model.js"></script>
     <script src="/counter-controller.js"></script>
     <!-- <script src="/countdown-controller.js"></script> -->
+    <style>
+      #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
+        background-color: palevioletred;
+      }
+
+      #title {
+        font-size: xx-large;
+        color: maroon;
+      }
+
+      #count-text {
+        color: white;
+        font-size: x-large;
+        text-align: center;
+      }
+    </style>
     <title>MVC Counter</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="container">
+      <div id="title">MVC Counter</div>
+      <div id="root"></div>
+    </div>
   </body>
   <script>
     const root = document.getElementById('root');
@@ -19,6 +43,7 @@
     const countController = window.countController;
 
     const countText = document.createElement('div');
+    countText.id = 'count-text';
     counterModel.registerObserver((count) => (countText.textContent = count));
     root.appendChild(countText);
 
